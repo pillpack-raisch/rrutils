@@ -233,7 +233,7 @@ const loadConfig = (dirpath = '../config') => {
 const makeLogger = (service) => {
   const { createLogger, format, transports } = winston
   const LOG_LEVEL = DEBUG ? 'debug' : _.get(process, 'env.LOG_LEVEL', 'info')
-  createLogger({
+  return createLogger({
     level: LOG_LEVEL,
     defaultMeta: { service },
     format: format.combine(format.splat(), format.simple()),
