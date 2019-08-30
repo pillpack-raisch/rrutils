@@ -58,9 +58,9 @@ const axios = require('axios')
 const jsonwebtoken = require('jsonwebtoken')
 const uuid = require('uuid/v1')
 const stringify = require('json-stringify-safe')
-const winston = require('winston')
 const Joi = require('@hapi/joi')
 const Mustache = require('mustache')
+const winston = require('winston')
 
 const xml2js = require('xml2js')
 const parseXML = xml2js.parseString
@@ -230,6 +230,19 @@ const loadConfig = (dirpath = '../config') => {
   return result
 }
 
+const makeLogger = (service) => {
+  const { createLogger, format, transports } = winston
+  const LOG_LEVEL = DEBUG ? 'debug' : _.get(process, 'env.LOG_LEVEL', 'info')
+  const log = createLogger({
+    level: LOG_LEVEL,
+    defaultMeta: { service },
+    format: format.combine(format.splat(), format.simple()),
+    transports: [
+      new transports.Console()
+    ]
+  })
+}
+
 /**
  * Create an ISO8601 timestamp string for the current time and date.
  *
@@ -294,7 +307,9 @@ module.exports = _.merge(util, {
   axios,
   jsonwebtoken,
   jwt: jsonwebtoken,
+  winston,
   loadConfig,
+  makeLogger,
   getTimestamp,
   getShortTimestamp,
   getRandomInt,
