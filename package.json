@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/pillpack-raisch/rrutils.git"
   },
-  "author": "",
+  "author": "Rob Raisch <rob.raisch@pillpack.com>",
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/pillpack-raisch/rrutils/issues"
