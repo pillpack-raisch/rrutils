@@ -24,7 +24,7 @@
     "debug": "^4.1.1",
     "glob": "^7.1.4",
     "json-stringify-safe": "^5.0.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.15",
     "mustache": "^3.0.3",
     "uuid": "^3.3.3",
